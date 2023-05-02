@@ -7,12 +7,12 @@
     <meta property="og:title" content="MiniWoB++ Documentation" />
     <meta property="og:type" content="website" />
     <meta property="og:description" content="A collection of over 100 web interaction environments, along with JavaScript and Python interfaces." />
-    <meta property="og:url" content="https://miniwob.farama.org/content/python_setup.html" /><meta property="og:image" content="https://miniwob.farama.org/_static/img/miniwobplusplus-github.png" /><meta name="twitter:card" content="summary_large_image"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Basic Usage" href="../python_usage/" /><link rel="prev" title="MiniWoB++" href="../../" />
-        <link rel="canonical" href="https://miniwob.farama.org/content/python_setup.html" />
+    <meta property="og:url" content="https://miniwob.farama.org/content/action_space.html" /><meta property="og:image" content="https://miniwob.farama.org/_static/img/miniwobplusplus-github.png" /><meta name="twitter:card" content="summary_large_image"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Javascript API" href="../javascript_api/" /><link rel="prev" title="Observation Space" href="../observation_space/" />
+        <link rel="canonical" href="https://miniwob.farama.org/content/action_space.html" />
 
-    <!-- Generated with Sphinx 6.2.1 and Furo 2022.12.07.dev1 -->
-        <title>Setup - MiniWoB++ Documentation</title>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/><!-- Generated with Sphinx 6.2.1 and Furo 2022.12.07.dev1 -->
+        <title>Action Space - MiniWoB++ Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=721f65a87c37740baa8d605b09db5bec3a2987a8" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=4297ed78bc2370ec4493f1a6639f04addebc5da5" />
@@ -224,9 +224,9 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Python Interface</span></p>
 <ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_usage/">Basic Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../key_combinations/">Key Combinations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../observation_space/">Observation Space</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Action Space</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Javascript Interface</span></p>
 <ul>
@@ -375,7 +375,16 @@
             </svg>
             <span>Back to top</span>
           </a>
-          <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+          <div class="content-icon-container"><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/Farama-Foundation/miniwob-plusplus/edit/master/docs/content/action_space.md" title="Edit this page">
+    <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
+      <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" />
+    </svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
               <button class="theme-toggle" title="Toggle color theme">
                 <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
                 <svg class="theme-icon-when-auto">
@@ -398,33 +407,208 @@
           </div>
           <article role="main">
             
-            <section id="setup">
-<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h1>
-<p>Follow the instructions below to setup the Python interface.</p>
-<section id="install-the-miniwob-library">
-<h2>Install the MiniWoB++ Library<a class="headerlink" href="#install-the-miniwob-library" title="Permalink to this heading">#</a></h2>
-<p>Inside the repository directory, run</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>.
-</pre></div>
+            <section id="action-space">
+<h1>Action Space<a class="headerlink" href="#action-space" title="Permalink to this heading">#</a></h1>
+<p>An action is specified by an <strong>action type</strong> (e.g., <code class="docutils literal notranslate"><span class="pre">CLICK_COORDS</span></code>)
+and the necessary fields for that action type (e.g., <code class="docutils literal notranslate"><span class="pre">coords=[30,</span> <span class="pre">60]</span></code>).</p>
+<section id="supported-action-types">
+<h2>Supported Action Types<a class="headerlink" href="#supported-action-types" title="Permalink to this heading">#</a></h2>
+<p>MiniWoB++ environments support the following action types:</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NONE</span></code></p></td>
+<td><p>Do nothing for the current step.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MOVE_COORDS</span></code></p></td>
+<td><p>Move the cursor to the specified coordinates.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CLICK_COORDS</span></code></p></td>
+<td><p>Click on the specified coordinates.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">DBLCLICK_COORDS</span></code></p></td>
+<td><p>Double-click on the specified coordinates.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MOUSEDOWN_COORDS</span></code></p></td>
+<td><p>Start dragging on the specified coordinates.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MOUSEUP_COORDS</span></code></p></td>
+<td><p>Stop dragging on the specified coordinates.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SCROLL_UP_COORDS</span></code></p></td>
+<td><p>Scroll up on the mouse wheel at the specified coordinates.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SCROLL_DOWN_COORDS</span></code></p></td>
+<td><p>Scroll down on the mouse wheel at the specified coordinates.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CLICK_ELEMENT</span></code></p></td>
+<td><p>Click on the specified element using JavaScript.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PRESS_KEY</span></code></p></td>
+<td><p>Press the specified <a class="reference internal" href="#key-combinations"><span class="xref myst">key or key combination</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TYPE_TEXT</span></code></p></td>
+<td><p>Type the specified string.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TYPE_FIELD</span></code></p></td>
+<td><p>Type the value of the specified task field.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">FOCUS_ELEMENT_AND_TYPE_TEXT</span></code></p></td>
+<td><p>Click on the specified element using JavaScript, and then type the specified string.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FOCUS_ELEMENT_AND_TYPE_FIELD</span></code></p></td>
+<td><p>Click on the specified element using JavaScript, and then type the value of the specified task field.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-<p>If this gives you problems, try again and add pip’s <code class="docutils literal notranslate"><span class="pre">--ignore-installed</span></code> flag.</p>
+<p>There are action types that perform similar actions (e.g., <code class="docutils literal notranslate"><span class="pre">CLICK_COORDS</span></code> and <code class="docutils literal notranslate"><span class="pre">CLICK_ELEMENT</span></code>).
+A common practice is to specify a subset of action types that the agent can use in the config, as described below.</p>
 </section>
-<section id="install-chrome-chromium-and-chromedriver">
-<h2>Install Chrome/Chromium and ChromeDriver<a class="headerlink" href="#install-chrome-chromium-and-chromedriver" title="Permalink to this heading">#</a></h2>
-<p>We strongly recommend using Chrome or Chromium as the web browser,
-as other browsers may render the environments differently.</p>
-<p>The MiniWoB++ Python interface uses <a class="reference external" href="https://www.selenium.dev/documentation/webdriver/">Selenium</a>,
-which interacts with the browser via the <a class="reference external" href="https://w3c.github.io/webdriver/">WebDriver API</a>.
-If you use Google Chrome as the web browser, follow one of the
-<a class="reference external" href="https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/">instruction methods</a>
-to install ChromeDriver. The simplest method is to download
-<a class="reference external" href="https://chromedriver.chromium.org/downloads">ChromeDriver</a> with the matching version,
-unzip it, and then add the directory containing the <code class="docutils literal notranslate"><span class="pre">chromedriver</span></code> executable to the <code class="docutils literal notranslate"><span class="pre">PATH</span></code> environment variable:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/path/to/chromedriver
-</pre></div>
+<section id="action-configs">
+<h2>Action Configs<a class="headerlink" href="#action-configs" title="Permalink to this heading">#</a></h2>
+<p>The list of selected action types, along with other configurations, can be customized
+by passing a <code class="docutils literal notranslate"><span class="pre">miniwob.action.ActionSpaceConfig</span></code> object to the <code class="docutils literal notranslate"><span class="pre">action_space_config</span></code> argument
+during environment construction.</p>
+<p>An <code class="docutils literal notranslate"><span class="pre">ActionSpaceConfig</span></code> object has the following fields:</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">action_types</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Sequence[ActionTypes]</span></code></p></td>
+<td><p>An ordered sequence of action types to include.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">screen_width</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>Screen width. Will be overridden by the environment constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">screen_height</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>Screen height. Will be overridden by the environment constructor.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">coord_bins</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tuple[int,</span> <span class="pre">int]</span></code></p></td>
+<td><p>If specified, bin the x and y coordinates to these numbers of bins.
+Mouse actions will be executed at the middle of the specified partition.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scroll_amount</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>The amount to scroll for scroll actions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scroll_time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Time in milliseconds to wait for scroll action animation.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">allowed_keys</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Sequence[str]</span></code></p></td>
+<td><p>An ordered sequence of allowed <a class="reference internal" href="#key-combinations"><span class="xref myst">keys and key combinations</span></a> for the <code class="docutils literal notranslate"><span class="pre">PRESS_KEY</span></code> action.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">text_max_len</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Maximum text length for the <code class="docutils literal notranslate"><span class="pre">TYPE_TEXT</span></code> action.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">text_charset</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">set[str]</span></code></p></td>
+<td><p>Character set for the <code class="docutils literal notranslate"><span class="pre">TYPE_TEXT</span></code> action.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-<p>For Chromium, the driver may also be available in a software package; for example, in Debian/Ubuntu:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>chromium-driver
+<section id="presets">
+<h3>Presets<a class="headerlink" href="#presets" title="Permalink to this heading">#</a></h3>
+<p>The following preset names can be specified in place of the <code class="docutils literal notranslate"><span class="pre">ActionSpaceConfig</span></code> object:
+(<strong>TODO</strong>: Implement this in code)</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;all_supported&quot;</span></code>: Select all supported actions, including redundant ones.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;shi17&quot;</span></code>: The action space from (Shi et al., 2017)
+<a class="reference external" href="http://proceedings.mlr.press/v70/shi17a/shi17a.pdf">World of Bits: An Open-Domain Platform for Web-Based Agents</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;liu18&quot;</span></code>: The action space from (Liu et al., 2018)
+<a class="reference external" href="https://arxiv.org/abs/1802.08802">Reinforcement Learning on Web Interfaces Using Workflow-Guided Exploration</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;humphreys22&quot;</span></code>: The action space from (Humphreys et al., 2022)
+<a class="reference external" href="https://arxiv.org/abs/2202.08137">A data-driven approach for learning to control computers</a>.</p></li>
+</ul>
+</section>
+<section id="key-combinations">
+<h3>Key combinations<a class="headerlink" href="#key-combinations" title="Permalink to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">PRESS_KEY</span></code> action type issues a key combination via Selenium.
+Each key combination in the <code class="docutils literal notranslate"><span class="pre">allowed_keys</span></code> config follow the rules:</p>
+<ul class="simple">
+<li><p>Modifiers are specified using prefixes “C-” (control), “S-” (shift),
+“A-” (alternate), or “M-” (meta).</p></li>
+<li><p>Printable character keys (a, 1, etc.) are specified directly.
+Shifted characters (A, !, etc.) are equivalent to “S-” + non-shifted counterpart.</p></li>
+<li><p>Special keys are inclosed in “&lt;…&gt;”. The list of valid names is specified in
+<code class="docutils literal notranslate"><span class="pre">miniwob.constants.WEBDRIVER_SPECIAL_KEYS</span></code>.</p></li>
+</ul>
+<p>Example valid key combinations:<code class="docutils literal notranslate"><span class="pre">&quot;7&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;&lt;Enter&gt;&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;C-S-&lt;ArrowLeft&gt;&quot;</span></code>.</p>
+</section>
+</section>
+<section id="action-object">
+<h2>Action Object<a class="headerlink" href="#action-object" title="Permalink to this heading">#</a></h2>
+<p>The action passed to the <a class="reference external" href="https://gymnasium.farama.org/api/env/#gymnasium.Env.step"><code class="docutils literal notranslate"><span class="pre">step</span></code></a> method
+should be a <code class="docutils literal notranslate"><span class="pre">dict</span></code> whose field inclusion depends on the selected action types in the config:</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Inclusion</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">action_type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Action type index from the <code class="docutils literal notranslate"><span class="pre">action_types</span></code> list in the config.</p></td>
+<td><p>Always.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">coords</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(2,)</span></code></p></td>
+<td><p>Left and top coordinates.
+Depending on the <code class="docutils literal notranslate"><span class="pre">coord_bins</span></code> config, the values can be of type <code class="docutils literal notranslate"><span class="pre">int8</span></code> (binned) or <code class="docutils literal notranslate"><span class="pre">float32</span></code> (unbinned).</p></td>
+<td><p>When any <code class="docutils literal notranslate"><span class="pre">*COORDS</span></code> action type is selected.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ref</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Element <code class="docutils literal notranslate"><span class="pre">ref</span></code> ID. If no element has the specified <code class="docutils literal notranslate"><span class="pre">ref</span></code>, the action becomes a no-op.</p></td>
+<td><p>When any <code class="docutils literal notranslate"><span class="pre">*_ELEMENT*</span></code> action type is selected.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">key</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Key index from the <code class="docutils literal notranslate"><span class="pre">allowed_keys</span></code> list in the config.</p></td>
+<td><p>When the <code class="docutils literal notranslate"><span class="pre">PRESS_KEY</span></code> action type is selected.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">text</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Text to type.</p></td>
+<td><p>When any <code class="docutils literal notranslate"><span class="pre">*_TYPE_TEXT</span></code> action type is selected.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">field</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Index from the task field list <code class="docutils literal notranslate"><span class="pre">obs[&quot;fields&quot;]</span></code>. If the index is out of bound, no text will be typed.</p></td>
+<td><p>When any <code class="docutils literal notranslate"><span class="pre">*_TYPE_FIELD</span></code> action type is selected.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For instance, if the config only contains action types <code class="docutils literal notranslate"><span class="pre">CLICK_COORDS</span></code> and <code class="docutils literal notranslate"><span class="pre">PRESS_KEY</span></code>,
+the action object can be</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">action</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;action_type&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>     <span class="c1"># CLICK_COORDS</span>
+  <span class="s2">&quot;coords&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">]),</span>
+  <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>             <span class="c1"># Ignored by the action CLICK_COORDS</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -435,18 +619,18 @@ unzip it, and then add the directory containing the <code class="docutils litera
         <footer>
           
           <div class="related-pages">
-            <a class="next-page" href="../python_usage/">
+            <a class="next-page" href="../javascript_api/">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Basic Usage</div>
+                <div class="title">Javascript API</div>
               </div>
               <svg class="furo-related-icon">
                 <use href="#svg-arrow-right"></use>
               </svg>
             </a>
-            <a class="prev-page" href="../../">
+            <a class="prev-page" href="../observation_space/">
               <svg class="furo-related-icon">
                 <use href="#svg-arrow-right"></use>
               </svg>
@@ -455,7 +639,7 @@ unzip it, and then add the directory containing the <code class="docutils litera
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Home</div>
+                <div class="title">Observation Space</div>
                 
               </div>
             </a>
@@ -463,7 +647,7 @@ unzip it, and then add the directory containing the <code class="docutils litera
           <div class="bottom-of-page">
             <div class="left-details">
               <div class="copyright">
-                Copyright &#169; 2023
+                Copyright &#169; 2023 Farama Foundation
               </div>
               <!--
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
@@ -473,14 +657,7 @@ unzip it, and then add the directory containing the <code class="docutils litera
             </div>
             <div class="right-details">
               <div class="icons">
-                <a class="muted-link" href="https://github.com/Farama-Foundation/miniwob-plusplus"
-                  aria-label="On GitHub">
-                  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                      d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z">
-                    </path>
-                  </svg>
-                </a>
+                
               </div>
             </div>
           </div>
@@ -499,9 +676,14 @@ unzip it, and then add the directory containing the <code class="docutils litera
           <div class="toc-tree-container">
             <div class="toc-tree">
               <ul>
-<li><a class="reference internal" href="#">Setup</a><ul>
-<li><a class="reference internal" href="#install-the-miniwob-library">Install the MiniWoB++ Library</a></li>
-<li><a class="reference internal" href="#install-chrome-chromium-and-chromedriver">Install Chrome/Chromium and ChromeDriver</a></li>
+<li><a class="reference internal" href="#">Action Space</a><ul>
+<li><a class="reference internal" href="#supported-action-types">Supported Action Types</a></li>
+<li><a class="reference internal" href="#action-configs">Action Configs</a><ul>
+<li><a class="reference internal" href="#presets">Presets</a></li>
+<li><a class="reference internal" href="#key-combinations">Key combinations</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#action-object">Action Object</a></li>
 </ul>
 </li>
 </ul>
@@ -656,8 +838,8 @@ unzip it, and then add the directory containing the <code class="docutils litera
     
     <script>
       const versioningConfig = {
-        githubUser: 'Farama-Foundation',
-        githubRepo: 'miniwob-plusplus',
+        githubUser: '',
+        githubRepo: '',
       };
       fetch('/main/_static/versioning/versioning_menu.html').then(response => {
         if (response.status === 200) {
