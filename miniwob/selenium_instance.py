@@ -272,7 +272,6 @@ class SeleniumInstance(Thread):
             extra_metadata = {}
         else:
             obs[i], extra_metadata = self.get_observation(use_cached_fields=True)
-        metadata["elapsed"] = max(0.0, time.time() - self.start_time)
         metadata.update(extra_metadata)
         infos[i] = metadata
 
