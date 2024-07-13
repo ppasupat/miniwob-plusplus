@@ -369,10 +369,10 @@ core.getDOMInfo = function (baseElement) {
       answer.focused = true;
     }
     // Indicate if the element is tampered with in this episode
-    if (element.dataset.tampered !== undefined &&
-        element.dataset.tampered == 'e' + WOB_EPISODE_ID) {
-      answer.tampered = true;
-    }
+    // if (element.dataset.tampered !== undefined &&
+    //     element.dataset.tampered == 'e' + WOB_EPISODE_ID) {
+    //   answer.tampered = true;
+    // }
     // For recording demonstrations: Record the target
     if (element.dataset.recording_target) {
       answer.recordingTarget = true;
